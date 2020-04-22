@@ -19,12 +19,12 @@ app.get("/", (req, res) => {
 // req has many properties,
 // expressjs.com  - lookup api reference
 
-app.get("/api/courses", (req, res) => {
-  res.send(courses);
+app.get("/api/forces", (req, res) => {
+  res.send(forces);
 });
 
 // single parameter
-app.get("/api/courses/:id", (req, res) => {
+app.get("/api/forces/:id", (req, res) => {
   res.send(req.params.id);
 });
 
@@ -47,6 +47,7 @@ const courses = [
   { id: 2, name: "course2" },
   { id: 3, name: "course3" },
 ];
+const forces = [{ id: 1, name: "gravitt" }];
 app.get("/api/partcourses/:id", (req, res) => {
   console.log(courses, courses[0]);
   const course = courses.find((c) => c.id === parseInt(req.params.id));
@@ -66,6 +67,7 @@ POST
 
 app.post("/api/courses", (req, res) => {
   const course = { id: courses.length + 1, name: req.body.name };
+  console.log(req.body);
   //have to enable parsing of json objects
   // see top of file app.use
   courses.push(course);
